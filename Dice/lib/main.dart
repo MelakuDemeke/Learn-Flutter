@@ -19,17 +19,23 @@ class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(child: Image.asset('images/dice1.png')),
-            SizedBox(width: 20),
-            Expanded(child: Image.asset('images/dice2.png')),
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: TextButton(
+              onPressed: () => {print('image pressed')},
+              child: Image.asset('images/dice1.png'),
+            ),
+          ),
+          Expanded(
+            child: TextButton(
+              onPressed: () => {print('image button pressed')},
+              child: Image.asset('images/dice2.png'),
+            ),
+          ),
+        ],
       ),
     );
   }
