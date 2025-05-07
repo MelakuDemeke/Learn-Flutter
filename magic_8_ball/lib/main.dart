@@ -4,10 +4,10 @@ import "dart:math";
 void main() => runApp(
   MaterialApp(
     home: Scaffold(
-      backgroundColor: Colors.blue[900],
+      backgroundColor: Colors.blue,
       appBar: AppBar(
         title: Text('Ask me Now', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue[900],
       ),
       body: MyApp(),
     ),
