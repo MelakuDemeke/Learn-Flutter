@@ -5,10 +5,9 @@ void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
   const XylophoneApp({super.key});
-
-  void playSound() {
+  void playSound(int num) {
     final player = AudioPlayer();
-    player.play(AssetSource('note1.wav'));
+    player.play(AssetSource('note$num.wav'));
   }
 
   @override
@@ -16,7 +15,30 @@ class XylophoneApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: TextButton(onPressed: playSound, child: Text('Play')),
+          child: Column(
+            children: [
+              TextButton(
+                onPressed: () {
+                  playSound(1);
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                ),
+                child: Text('Play'),
+              ),
+              TextButton(
+                onPressed: () {
+                  playSound(2);
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.yellow,
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                ),
+                child: Text('Play'),
+              ),
+            ],
+          ),
         ),
       ),
     );
