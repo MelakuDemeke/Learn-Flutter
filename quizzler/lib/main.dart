@@ -90,7 +90,6 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                print(quizBrain.isFinished());
                 checkAnswer(true);
               },
               child: const Text('True', style: TextStyle(fontSize: 20.0)),
