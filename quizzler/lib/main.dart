@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'quiz_brain.dart';
+
+QuizBrain quizBrain = QuizBrain();
 
 void main() => runApp(const Quizzler());
 
@@ -29,6 +32,8 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<Widget> scoreKeeper = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,12 +46,9 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.white,
-                ),
+                style: const TextStyle(fontSize: 25.0, color: Colors.white),
               ),
             ),
           ),
@@ -58,14 +60,23 @@ class _QuizPageState extends State<QuizPage> {
               style: TextButton.styleFrom(
                 backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
               ),
               onPressed: () {
-                // The user picked true.
+                setState(() {
+                  bool correctAns = quizBrain.getQuestionAnswer();
+                  if (correctAns == true) {
+                    scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                  } else {
+                    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                  }
+
+                  quizBrain.nextQuestion();
+                });
               },
-              child: const Text(
-                'True',
-                style: TextStyle(fontSize: 20.0),
-              ),
+              child: const Text('True', style: TextStyle(fontSize: 20.0)),
             ),
           ),
         ),
@@ -76,18 +87,26 @@ class _QuizPageState extends State<QuizPage> {
               style: TextButton.styleFrom(
                 backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
               ),
               onPressed: () {
-                // The user picked false.
+                setState(() {
+                  bool correctAns = quizBrain.getQuestionAnswer();
+                  if (correctAns == false) {
+                    scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                  } else {
+                    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                  }
+                  quizBrain.nextQuestion();
+                });
               },
-              child: const Text(
-                'False',
-                style: TextStyle(fontSize: 20.0),
-              ),
+              child: const Text('False', style: TextStyle(fontSize: 20.0)),
             ),
           ),
         ),
-        // TODO: Add a Row here as your score keeper
+        Row(children: scoreKeeper),
       ],
     );
   }
