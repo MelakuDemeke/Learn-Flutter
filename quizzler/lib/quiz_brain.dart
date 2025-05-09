@@ -26,7 +26,7 @@ class QuizBrain {
       'The total surface area of two human lungs is approximately 70 square metres.',
       true,
     ),
-    Question('Google was originally called \"Backrub\".', true),
+    Question('Google was originally called "Backrub".', true),
     Question(
       'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
       true,
@@ -49,5 +49,13 @@ class QuizBrain {
 
   bool getQuestionAnswer() {
     return _questionBank[_questionNumber].questionAnswer;
+  }
+
+  bool isFinished() {
+    return _questionNumber == _questionBank.length - 1;
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 }

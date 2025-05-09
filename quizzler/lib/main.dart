@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
@@ -35,15 +36,27 @@ class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
 
   void checkAnswer(bool userPickedAnswer) {
-    bool correctAns = quizBrain.getQuestionAnswer();
-    if (correctAns == userPickedAnswer) {
-      scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+    if (quizBrain.isFinished()) {
+      Alert(
+        context: context,
+        title: "End of Question",
+        desc: "all questions are answerd",
+      ).show();
+      setState(() {
+        scoreKeeper.clear();
+        quizBrain.reset();
+      });
     } else {
-      scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+      bool correctAns = quizBrain.getQuestionAnswer();
+      if (correctAns == userPickedAnswer) {
+        scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+      } else {
+        scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+      }
+      setState(() {
+        quizBrain.nextQuestion();
+      });
     }
-    setState(() {
-      quizBrain.nextQuestion();
-    });
   }
 
   @override
@@ -77,6 +90,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                print(quizBrain.isFinished());
                 checkAnswer(true);
               },
               child: const Text('True', style: TextStyle(fontSize: 20.0)),
