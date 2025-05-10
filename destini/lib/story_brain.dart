@@ -40,7 +40,7 @@ class StoryBrain {
   ];
 
   String getStory() {
-    return _storyData[1].storyTitle;
+    return _storyData[0].storyTitle;
   }
 
 }
