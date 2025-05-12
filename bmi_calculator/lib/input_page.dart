@@ -82,12 +82,27 @@ class InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          // Expanded(child: ReusableCard(colour: activeCardColour)),
+          Expanded(
+            child: ReusableCard(
+              colour: activeCardColour,
+              cardChild: Container(),
+            ),
+          ),
           Expanded(
             child: Row(
               children: [
-                // Expanded(child: ReusableCard(colour: activeCardColour)),
-                // Expanded(child: ReusableCard(colour: activeCardColour)),
+                Expanded(
+                  child: ReusableCard(
+                    colour: activeCardColour,
+                    cardChild: Container(),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    colour: activeCardColour,
+                    cardChild: Container(),
+                  ),
+                ),
               ],
             ),
           ),
