@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
+import 'constants.dart';
 
 final botttomContanerHeight = 80.0;
-const Color activeCardColour = Color(0xFF1D1E33);
-const Color inactiveCardColor = Color(0xFF111328);
-const Color buttonColor = Color(0xFFEB1555);
 
 enum Gender { male, female }
 
@@ -38,8 +36,8 @@ class InputPageState extends State<InputPage> {
                     },
                     colour:
                         selectedGender == Gender.male
-                            ? activeCardColour
-                            : inactiveCardColor,
+                            ? kActiveCardColour
+                            : kInactiveCardColor,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.mars,
                       label: "MALE",
@@ -55,8 +53,8 @@ class InputPageState extends State<InputPage> {
                     },
                     colour:
                         selectedGender == Gender.female
-                            ? activeCardColour
-                            : inactiveCardColor,
+                            ? kActiveCardColour
+                            : kInactiveCardColor,
                     cardChild: IconContent(
                       label: "FEMALE",
                       icon: FontAwesomeIcons.venus,
@@ -69,7 +67,7 @@ class InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               onPress: () {},
-              colour: activeCardColour,
+              colour: kActiveCardColour,
               cardChild: Container(),
             ),
           ),
@@ -79,14 +77,14 @@ class InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     onPress: () {},
-                    colour: activeCardColour,
+                    colour: kActiveCardColour,
                     cardChild: Container(),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     onPress: () {},
-                    colour: activeCardColour,
+                    colour: kActiveCardColour,
                     cardChild: Container(),
                   ),
                 ),
@@ -94,7 +92,7 @@ class InputPageState extends State<InputPage> {
             ),
           ),
           Container(
-            color: buttonColor,
+            color: kButtonColor,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
             height: botttomContanerHeight,
