@@ -198,10 +198,7 @@ class InputPageState extends State<InputPage> {
               onPressed: () {
                 Navigator.pushNamed(context, '/result');
               },
-              child: Text(
-                'CALCULATE YOUR BMI',
-                style: TextStyle(fontSize: 20.0, color: Colors.white),
-              ),
+              child: Text('CALCULATE YOUR BMI', style: kLargeButtonTextStyle),
             ),
           ),
         ],
