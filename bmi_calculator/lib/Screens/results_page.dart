@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
-import 'bottom_button.dart';
+import '../components/reusable_card.dart';
+import '../constants.dart';
+import '../components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({super.key});
