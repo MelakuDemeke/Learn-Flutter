@@ -3,8 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
-
-final botttomContanerHeight = 80.0;
+import 'bottom_button.dart';
 
 enum Gender { male, female }
 
@@ -201,30 +200,7 @@ class InputPageState extends State<InputPage> {
   }
 }
 
-class BottomButton extends StatelessWidget {
-  const BottomButton({
-    super.key,
-    required this.buttonText,
-    required this.onPressed,
-  });
 
-  final String buttonText;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: kButtonColor,
-      margin: EdgeInsets.only(top: 10.0),
-      width: double.infinity,
-      height: botttomContanerHeight,
-      child: TextButton(
-        onPressed: onPressed,
-        child: Text(buttonText, style: kLargeButtonTextStyle),
-      ),
-    );
-  }
-}
 
 class RoundIconButton extends StatelessWidget {
   final VoidCallback onPressed;
