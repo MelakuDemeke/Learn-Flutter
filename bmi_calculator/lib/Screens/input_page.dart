@@ -4,6 +4,7 @@ import '../components/icon_content.dart';
 import '../components/reusable_card.dart';
 import '../constants.dart';
 import '../components/bottom_button.dart';
+import '../calculator_brain.dart';
 
 enum Gender { male, female }
 
@@ -191,7 +192,20 @@ class InputPageState extends State<InputPage> {
           BottomButton(
             buttonText: 'CALCULATE YOUR BMI',
             onPressed: () {
-              Navigator.pushNamed(context, '/result');
+              CalculatorBrain calc = CalculatorBrain(
+                height: height,
+                weight: weight,
+              );
+
+              String bmi = calc.calculateBMI();
+              String result = calc.getResult();
+              String interpretation = calc.getInterpretation();
+
+              Navigator.pushNamed(context, '/result', arguments: {
+                'bmi': bmi,
+                'result': result,
+                'interpretation': interpretation,
+              });
             },
           ),
         ],
@@ -199,8 +213,6 @@ class InputPageState extends State<InputPage> {
     );
   }
 }
-
-
 
 class RoundIconButton extends StatelessWidget {
   final VoidCallback onPressed;

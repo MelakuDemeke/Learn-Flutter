@@ -8,6 +8,13 @@ class ResultsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+
+    final bmi = args['bmi'];
+    final result = args['result'];
+    final interpretaion = args['interpretation'];
+
     return Scaffold(
       appBar: AppBar(title: Text('BMI CALCULATOR')),
       body: Column(
@@ -24,11 +31,16 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Center(child: Text('NORMAL', style: kResultTitleTextStyle)),
-                  Center(child: Text('19.25', style: kBMITExtStyle)),
                   Center(
                     child: Text(
-                      'You have a normal body Good Job',
+                      result.toString(),
+                      style: kResultTitleTextStyle,
+                    ),
+                  ),
+                  Center(child: Text(bmi.toString(), style: kBMITExtStyle)),
+                  Center(
+                    child: Text(
+                      interpretaion.toString(),
                       textAlign: TextAlign.center,
                       style: kBodyTextStyle,
                     ),
