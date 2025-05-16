@@ -189,19 +189,38 @@ class InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: kButtonColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: botttomContanerHeight,
-            child: TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/result');
-              },
-              child: Text('CALCULATE YOUR BMI', style: kLargeButtonTextStyle),
-            ),
+          BottomButton(
+            buttonText: 'CALCULATE YOUR BMI',
+            onPressed: () {
+              Navigator.pushNamed(context, '/result');
+            },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BottomButton extends StatelessWidget {
+  const BottomButton({
+    super.key,
+    required this.buttonText,
+    required this.onPressed,
+  });
+
+  final String buttonText;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kButtonColor,
+      margin: EdgeInsets.only(top: 10.0),
+      width: double.infinity,
+      height: botttomContanerHeight,
+      child: TextButton(
+        onPressed: onPressed,
+        child: Text(buttonText, style: kLargeButtonTextStyle),
       ),
     );
   }

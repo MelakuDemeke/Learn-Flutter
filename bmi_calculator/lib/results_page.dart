@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'input_page.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({super.key});
@@ -24,20 +25,12 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Center(child: Text('NORMAL', style: kResultTitleTextStyle)),
-                  Center(
-                    child: Text(
-                      '19.25',
-                      style: TextStyle(
-                        fontSize: 100.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  Center(child: Text('19.25', style: kBMITExtStyle)),
                   Center(
                     child: Text(
                       'You have a normal body Good Job',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 25),
+                      style: kBodyTextStyle,
                     ),
                   ),
                 ],
@@ -45,17 +38,11 @@ class ResultsPage extends StatelessWidget {
               onPress: () {},
             ),
           ),
-          Container(
-            color: kButtonColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: 80,
-            child: TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/result');
-              },
-              child: Text('Re-Calculate', style: kLargeButtonTextStyle),
-            ),
+          BottomButton(
+            buttonText: 'Re-Calculate',
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ],
       ),

@@ -17,6 +17,10 @@ const kTitleTextStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 50.0);
 
 const kResultTitleTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
-  color: Colors.green,
-  fontSize: 20.0,
+  color: Color(0xFF24D876),
+  fontSize: 22.0,
 );
+
+const kBMITExtStyle = TextStyle(fontSize: 100, fontWeight: FontWeight.bold);
+
+const kBodyTextStyle = TextStyle(fontSize: 22);
