@@ -10,6 +10,8 @@ class CityScreen extends StatefulWidget {
 
 class _CityScreenState extends State<CityScreen> {
   late String cityName;
+  final TextEditingController _cityController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +41,23 @@ class _CityScreenState extends State<CityScreen> {
                   onChanged: (value) {
                     cityName = value;
                   },
+                  controller: _cityController,
                   style: TextStyle(color: Colors.black),
                   decoration: kInputDecoration,
                 ),
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context, cityName);
+                  String cityName = _cityController.text.trim();
+
+                  if (cityName.isNotEmpty) {
+                    Navigator.pop(context, cityName);
+                  } else {
+                    final snackBar = SnackBar(
+                      content: Text('Please insert the city name'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
                 },
                 child: Text('Get Weather', style: kButtonTextStyle),
               ),
