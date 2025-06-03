@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "717641395795",
+    "project_id": "flash-chat-bb9cf",
+    "storage_bucket": "flash-chat-bb9cf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717641395795:android:4baf134d3d26c8b437e0a6",
+        "android_client_info": {
+          "package_name": "com.example.flashchat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCokzwqlJ6HsvCczmEjKbM6zZuC0XBl0MY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717641395795:android:31a676506292cb2f37e0a6",
+        "android_client_info": {
+          "package_name": "me.melaku.flashchat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCokzwqlJ6HsvCczmEjKbM6zZuC0XBl0MY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
