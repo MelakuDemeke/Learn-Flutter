@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../components/RoundedButton.dart';
+import '../components/rounded_button.dart';
 import '../constants.dart';
 import 'chat_screen.dart';
 
@@ -65,13 +65,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 // print(email);
                 // print(password);
                 try {
-                  final newUser = await _auth.createUserWithEmailAndPassword(
+                  await _auth.createUserWithEmailAndPassword(
                     email: email,
                     password: password,
                   );
-                  if (newUser != null) {
-                    Navigator.pushNamed(context, ChatScreen.id);
-                  }
+
+                  Navigator.pushNamed(context, ChatScreen.id);
                 } catch (e) {
                   print(e);
                 }
