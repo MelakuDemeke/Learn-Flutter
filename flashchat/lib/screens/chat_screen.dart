@@ -24,7 +24,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-
     getCurrentUser();
   }
 
@@ -99,6 +98,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       _firestore.collection('messages').add({
                         'text': messageText,
                         'sender': loggedInUser.email,
+                        'timestamp': FieldValue.serverTimestamp(),
                       });
                     },
                     child: Text('Send', style: kSendButtonTextStyle),
@@ -119,7 +119,10 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream: _firestore
+          .collection('messages')
+          .orderBy('timestamp', descending: false) // Ensure ascending order
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
@@ -129,7 +132,7 @@ class MessagesStream extends StatelessWidget {
           return Center(child: Text('No messages'));
         }
 
-        final messages = snapshot.data!.docs.reversed;
+        final messages = snapshot.data!.docs;
 
         List<Widget> messageWidgets = messages.map((message) {
           final messageText = message['text'];
@@ -146,10 +149,11 @@ class MessagesStream extends StatelessWidget {
 
         return Expanded(
           child: ListView(
-            reverse: true,
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
             shrinkWrap: true,
-            children: messageWidgets,
+            reverse: true, // <- Key line to scroll to bottom
+            children: messageWidgets.reversed
+                .toList(), // needed for reverse: true
           ),
         );
       },
